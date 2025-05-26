@@ -19,6 +19,8 @@ def download_files_from_directory(url, download_path):
     links = soup.find_all('a')
     
     for link in links:
+        if links.index(link) < 15:
+            continue
         href = link.get('href')
         if href and not href.startswith('?') and not href.startswith('/') and not href.startswith('../'):
             file_url = urljoin(url, href)
@@ -40,5 +42,8 @@ if __name__ == "__main__":
     # Path to the directory where files will be downloaded
     download_directory = "/home/nmb/Music"
     
-    download_files_from_directory(directory_url, download_directory)
+    download_files_from_directory(
+        directory_url, 
+        download_directory
+    )
 
