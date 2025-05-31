@@ -33,12 +33,12 @@ def download_files_from_directory(url, download_path, download_limit=10):
                 continue
             
             # Download the file
-            print(f"Downloading {file_url}...")
+            print(f"Downloading {decoded_filename}...")
             file_response = requests.get(file_url)
             if file_response.status_code == 200:
                 with open(file_path, 'wb') as file:
                     file.write(file_response.content)
-                print(f"Downloaded {file_path}")
+                print(f"Download finished...")
                 downloads_done += 1
             else:
                 print(f"Failed to download {file_url}")
